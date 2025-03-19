@@ -4,7 +4,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 
 const app = express();
-const PORT = 3500;
+const PORT = process.env.PORT || 3500;
 
 app.use(cors());
 // app.use(cors({ origin: "https://nxkc.netlify.app", credentials: true }));
