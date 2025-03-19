@@ -164,7 +164,7 @@ Category.create({
     let Day = Number(LunchingTime[0]) >= 10 ? LunchingTime[0] : `0${LunchingTime[0]}`;
     let Month = Number(LunchingTime[1]) >= 10 ? LunchingTime[1] : `0${LunchingTime[1]}`;
 
-    let ITime = `${LunchingTime[2]}-${Month}-${Day}T00:00:00.000+00:00`;
+    let ITime = `${LunchingTime[2]}-${Month}-${Day}`;
 
     Share.create({ 
       _id:CreatedCategory._id, 
