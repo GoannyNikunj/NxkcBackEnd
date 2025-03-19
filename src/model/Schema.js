@@ -164,14 +164,30 @@ Category.create({
     let Day = Number(LunchingTime[0]) >= 10 ? LunchingTime[0] : `0${LunchingTime[0]}`;
     let Month = Number(LunchingTime[1]) >= 10 ? LunchingTime[1] : `0${LunchingTime[1]}`;
 
-    let ITime = `${LunchingTime[2]}-${Month}-${Day}T00:00:00.000+00:00`;
+    let ITime = new Date(`${LunchingTime[2]}-${Month}-${Day}T00:00:00.000+00:00`);
+    
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      
+      // Adding required offset (change this logic as per your needs)
+      date.setFullYear(2025);
+      date.setMonth(1); // February (months are zero-based)
+      date.setDate(21);
+      date.setHours(12, 25, 0, 398); // Setting hours, minutes, seconds, milliseconds
+  
+      // Convert to ISO string and format the required way
+      const isoString = date.toISOString(); // e.g., "2025-02-21T12:25:00.398Z"
+      
+      // Convert "Z" to "+00:00"
+      return isoString.replace("Z", "+00:00");
+  }
 
     Share.create({ 
       _id:CreatedCategory._id, 
       Name: "", 
       Price: 0, 
       CategoryId: CreatedUser._id,
-      LaunchTime: new Date(`${LunchingTime[2]}-${Month}-${Day}`),
+      LaunchTime: formatDate(ITime),
       Investment:0,
       PriceData:PriceData
     }).then(CreatedShare => { console.log('Default Data Create') 
