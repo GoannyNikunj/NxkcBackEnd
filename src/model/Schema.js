@@ -171,7 +171,7 @@ Category.create({
       Name: "", 
       Price: 0, 
       CategoryId: CreatedUser._id,
-      LaunchTime: ITime,
+      LaunchTime: new Date(ITime),
       Investment:0,
       PriceData:PriceData
     }).then(CreatedShare => { console.log('Default Data Create') 
