@@ -164,14 +164,13 @@ Category.create({
     let Day = Number(LunchingTime[0]) >= 10 ? LunchingTime[0] : `0${LunchingTime[0]}`;
     let Month = Number(LunchingTime[1]) >= 10 ? LunchingTime[1] : `0${LunchingTime[1]}`;
 
-    let ITime = `${LunchingTime[2]}-${Month}-${Day}`;
+    let ITime = `${LunchingTime[2]}-${Month}-${Day}T00:00:00.000+00:00`;
 
     Share.create({ 
       _id:CreatedCategory._id, 
       Name: "", 
       Price: 0, 
       CategoryId: CreatedUser._id,
-      LaunchTime: new Date(ITime),
       Investment:0,
       PriceData:PriceData
     }).then(CreatedShare => { console.log('Default Data Create') 
